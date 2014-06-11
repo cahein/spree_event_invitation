@@ -3,7 +3,7 @@ Gem::Specification.new do |s|
   s.platform    = Gem::Platform::RUBY
   s.name        = 'spree_event_invitation'
   s.version     = '2.2.2'
-  s.summary     = 'Admin creates event announcements, which are shown in the store frontend'
+  s.summary     = 'As admin you can create event announcements, which are shown in the store frontend'
   s.description = 'Der verlag braucht die möglichkeit, auf veranstaltungen und termine aufmerksam zu machen'
   s.required_ruby_version = '>= 1.9.3'
 
