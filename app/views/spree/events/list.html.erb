@@ -1,0 +1,19 @@
+<% events = Spree::Event.all.where('date > ?', Date.today).order('date ASC') %>
+
+<% if events  %> 
+<div id="event-list">
+  <h2>Veranstaltungen</h2>
+  <table>
+	 <tbody>
+		<% events.each do |event| %>
+		<tr>
+		  <td class="title"><%= event.title %></td>
+		  <td><%= I18n.localize(event.date, :format => '%d %B %Y') %></td>
+		  <td><%= event.begin %></td>
+		</tr>
+		<% end %>
+	 </tbody>
+  </table>
+</div>
+<% end  %> 
+

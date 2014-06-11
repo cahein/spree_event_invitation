@@ -1,0 +1,36 @@
+<%= render "spree/admin/shared/configuration_menu" %>
+<% self.title = "foo" %>
+
+<% content_for :title do %>
+TuP: Liste von Veranstaltungen
+<% end %>
+
+<% content_for :page_actions do %>
+  <li><%= button_link_to Spree.t('new_event'), new_object_url, :icon => 'icon-plus', :id => 'admin_new_event' %></li>
+<% end %>
+
+
+<h2>Liste von Veranstaltungen</h2>
+
+<% if flash[:notice] %>
+<p class="notice"><%= flash[:notice] %></p>
+<% end %>
+
+<table>
+<tbody>
+<tr><th>Titel</th><th>Datum</th><th>Begin</th></tr>
+
+
+  <% @events.each do |event| %>
+  <tr>
+    <td><%= event.title %></td>
+    <td><%= event.date %></td>
+    <td><%= event.begin %></td>
+    <td class="actions" data-hook="admin_pages_index_row_actions">
+      <%= link_to_edit event, :no_text => true %>
+      <%= link_to_delete event, :no_text => true %>
+    </td>
+  </tr>
+  <% end %>
+</tbody>
+</table>

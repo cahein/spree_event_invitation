@@ -1,0 +1,58 @@
+<%= render "spree/admin/shared/configuration_menu" %>
+
+<% content_for :title do %>
+TuP Veranstaltung
+<% end %>
+
+
+<% content_for :page_actions do %>
+  <li><%= button_link_to Spree.t(:back_to_events_list), spree.admin_events_url, :icon => 'icon-arrow-left' %></li>
+<% end %>
+
+<%= render "spree/shared/error_messages", :target => @event %>
+
+<%= form_for :event, url: {action: "create"} do |f| %>
+<table>
+
+<%# new or edit? %>
+<% if(!@event.id.nil?) %>
+<%= f.hidden_field :id, :value => @event.id %>
+<% page_title = 'edit_event' %>
+<% else %>
+<% page_title = 'new_event' %>
+<% end %>
+
+<% content_for :page_title do %>
+   <%= Spree.t(page_title) %>
+<% end %>
+
+<tr>
+<td><%= f.label :title %><span class="required">*</span></td>
+<td><%= f.text_field :title, :class => 'fullwidth title' %>
+</tr>
+<tr>
+<td><%= f.label :subtitle %></td>
+<td><%= f.text_field :subtitle, {:class => 'fullwidth'} %></td>
+</tr>
+<tr>
+<td><%= f.label :date %></td>
+<td><%= f.date_field(:date) %></td>
+</tr>
+<tr>
+<td><%= f.label :begin %></td>
+<td><%= f.text_field(:begin) %></td>
+</tr>
+<tr>
+<td><%= f.label :body %></td>
+<td><%= f.text_area :body, {:class => 'fullwidth'} %></td>
+</tr>
+<tr><td colspan="2">
+<% if(!@event.id.nil?) %>
+    <%= render :partial => 'spree/admin/shared/edit_resource_links' %>
+<% else %>
+    <%= render :partial => 'spree/admin/shared/new_resource_links' %>
+<% end %>
+
+</td></tr>
+<% end %>
+</table>
