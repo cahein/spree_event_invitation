@@ -1,0 +1,29 @@
+<%= render "spree/admin/shared/configuration_menu" %>
+
+<% content_for :title do %>
+<%= Spree.t('list_of_event_locations') %>
+<% end %>
+
+<% content_for :page_actions do %>
+  <li><%= button_link_to Spree.t('event_invitation.new_event_location'), new_object_url, :icon => 'icon-plus', :id => 'admin_new_event_location' %></li>
+  <li><%= button_link_to Spree.t('event_invitation.back_to_events_list'), spree.admin_events_url, :icon => 'icon-plus', :id => 'admin_event_location' %></li>
+<% end %>
+
+
+<h2><%= Spree.t('event_invitation.list_of_event_locations') %></h2>
+
+<% if flash[:notice] %>
+<p class="notice"><%= flash[:notice] %></p>
+<% end %>
+
+<table>
+  <% @event_locations.each do |location| %>
+  <tr>
+	 <td><%= location.name %></td>
+	 <td class="actions" data-hook="admin_pages_index_row_actions">
+		<%= link_to_edit location, :no_text => true %>
+		<%= link_to_delete location, :no_text => true %>
+	 </td>
+  </tr>
+  <% end %>
+</table>

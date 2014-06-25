@@ -1,12 +1,12 @@
 <%= render "spree/admin/shared/configuration_menu" %>
 
 <% content_for :title do %>
-TuP Veranstaltung
+<%= Spree.t('event_invitation.event') %>
 <% end %>
 
 
 <% content_for :page_actions do %>
-  <li><%= button_link_to Spree.t(:back_to_events_list), spree.admin_events_url, :icon => 'icon-arrow-left' %></li>
+  <li><%= button_link_to Spree.t('event_invitation.back_to_events_list'), spree.admin_events_url, :icon => 'icon-arrow-left' %></li>
 <% end %>
 
 <%= render "spree/shared/error_messages", :target => @event %>
@@ -23,7 +23,7 @@ TuP Veranstaltung
 <% end %>
 
 <% content_for :page_title do %>
-   <%= Spree.t(page_title) %>
+   <%= Spree.t('event_invitation.' + page_title) %>
 <% end %>
 
 <tr>
@@ -31,20 +31,24 @@ TuP Veranstaltung
 <td><%= f.text_field :title, :class => 'fullwidth title' %>
 </tr>
 <tr>
-<td><%= f.label :subtitle %></td>
-<td><%= f.text_field :subtitle, {:class => 'fullwidth'} %></td>
+<td><%= f.label :speaker %></td>
+<td><%= f.text_field :speaker, {:class => 'fullwidth'} %></td>
 </tr>
 <tr>
-<td><%= f.label :date %></td>
+<td><%= f.label :date %><span class="required">*</span></td>
 <td><%= f.date_field(:date) %></td>
 </tr>
 <tr>
-<td><%= f.label :begin %></td>
+<td><%= f.label :begin %><span class="required">*</span></td>
 <td><%= f.text_field(:begin) %></td>
 </tr>
 <tr>
 <td><%= f.label :body %></td>
 <td><%= f.text_area :body, {:class => 'fullwidth'} %></td>
+</tr>
+<tr>
+<td><%= f.label :event_location %><span class="required">*</span></td>
+<td><%= f.select(:event_location_id, Spree::EventLocation.find(:all).collect {|l| [l.name, l.id]}) %></td>
 </tr>
 <tr><td colspan="2">
 <% if(!@event.id.nil?) %>

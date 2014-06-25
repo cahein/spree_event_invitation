@@ -1,0 +1,55 @@
+<%= render "spree/admin/shared/configuration_menu" %>
+
+<% content_for :title do %>
+<%= Spree.t('event_invitation.event_location') %>
+<% end %>
+
+
+<% content_for :page_actions do %>
+  <li><%= button_link_to Spree.t('event_invitation.back_to_event_locations_list'), spree.admin_event_locations_url, :icon => 'icon-arrow-left' %></li>
+<% end %>
+
+<%= render "spree/shared/error_messages", :target => @event_location %>
+
+<%= form_for :event_location, url: {action: "create"} do |f| %>
+<table>
+
+
+<%# new or edit? %>
+<% if(!@event_location.id.nil?) %>
+<%= f.hidden_field :id, :value => @event_location.id %>
+<% page_title = 'edit_event_location' %>
+<% else %>
+<% page_title = 'new_event_location' %>
+<% end %>
+
+<% content_for :page_title do %>
+   <%= Spree.t('event_invitation.' + page_title) %>
+<% end %>
+
+<tr>
+<td><%= f.label :name %><span class="required">*</span></td>
+<td><%= f.text_field :name, :class => 'fullwidth' %>
+</tr>
+<tr>
+<td><%= f.label :address %><span class="required">*</span></td>
+<td><%= f.text_field :address1, {:class => 'fullwidth'} %></td>
+</tr>
+<tr>
+<td><%= f.label :zipcode %><span class="required">*</span></td>
+<td><%= f.text_field(:zipcode) %></td>
+</tr>
+<tr>
+<td><%= f.label :city %><span class="required">*</span></td>
+<td><%= f.text_field(:city) %></td>
+</tr>
+<tr><td colspan="2">
+<% if(!@event_location.id.nil?) %>
+    <%= render :partial => 'spree/admin/shared/edit_resource_links' %>
+<% else %>
+    <%= render :partial => 'spree/admin/shared/new_resource_links' %>
+<% end %>
+
+</td></tr>
+<% end %>
+</table>

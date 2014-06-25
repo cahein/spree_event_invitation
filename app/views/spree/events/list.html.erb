@@ -2,7 +2,7 @@
 
 <% if events  %> 
 <div id="event-list">
-  <h2>Veranstaltungen</h2>
+  <h2><%= Spree.t('list_of_events') %></h2>
   <table>
 	 <tbody>
 		<% events.each do |event| %>
@@ -16,4 +16,3 @@
   </table>
 </div>
 <% end  %> 
-

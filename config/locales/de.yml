@@ -1,0 +1,32 @@
+de:
+  spree:
+    event_invitation:
+      event: "Veranstaltung"
+      list_of_events: "Veranstaltungen"
+      back_to_events_list: "Zurück zu den Veranstaltungen"
+      new_event: "Veranstaltung hinzufügen"
+      edit_event: "Veranstaltung bearbeiten"
+      event_successfully_updated: "Veranstaltung erfolgreich aktualisiert"
+      event_location: "Veranstaltungsort"
+      list_of_event_locations: "Veranstaltungsorte"
+      back_to_event_locations_list: "Zurück zu den Veranstaltungsorten"
+      new_event_location: "Veranstaltungsort hinzufügen"
+      edit_event_location: "Veranstaltungsort bearbeiten"
+      event_location_successfully_updated: "Veranstaltungsort erfolgreich aktualisiert"
+      title: "Titel"
+      date: "Datum"
+      begin: "Beginn"
+  helpers:
+    label:
+      event:
+        title: "Titel"
+        speaker: "Referent"
+        date: "Datum"
+        begin: "Beginn"
+        body: "Ankündigungstext"
+        event_location: "Veranstaltungsort"
+      event_location:
+        name: "Name"
+        address: "Adresse"
+        zipcode: "Postleitzahl"
+        city: "Stadt"

@@ -28,7 +28,7 @@ module Spree
           if event.update_attributes(params)
             @@logger.info('going to update event: ' + params['id'])
           else
-            flash[:warn] =  "Nothing to update"
+            flash[:warn] =  Spree::Event.t("nothing_to_update")
             redirect_to action: :index
           end
         else
@@ -38,7 +38,7 @@ module Spree
 
         if event.valid?
           if event.save
-            flash[:notice] =  "Veranstaltung erfolgreich aktualisiert"
+            flash[:notice] =  Spree.t("event_invitation.event_successfully_updated")
             @events = Spree::Event.all.order("date DESC")
             render :index
           end
@@ -51,7 +51,7 @@ module Spree
 
       private
       def event_params
-        params.require(:event).permit(:id, :title, :subtitle, :body, :date, :begin, :end)
+        params.require(:event).permit(:id, :title, :speaker, :body, :date, :begin, :end, :event_location_id)
       end
     end
   end
