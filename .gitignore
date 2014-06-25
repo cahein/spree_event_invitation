@@ -14,3 +14,4 @@ pkg
 spec/dummy
 *.log
 *.log.*
+config/initializers/
