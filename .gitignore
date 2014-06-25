@@ -11,7 +11,7 @@ tmp
 nbproject
 pkg
 *.swp
-spec/dummy
 *.log
 *.log.*
-config/initializers/
+config/initializers
+spec/dummy
