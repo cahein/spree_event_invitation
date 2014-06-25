@@ -1,12 +1,12 @@
 <%= render "spree/admin/shared/configuration_menu" %>
 
 <% content_for :title do %>
-<%= Spree.t('list_of_event_locations') %>
+<%= Spree.t('event_invitation.list_of_event_locations') %>
 <% end %>
 
 <% content_for :page_actions do %>
-  <li><%= button_link_to Spree.t('event_invitation.new_event_location'), new_object_url, :icon => 'icon-plus', :id => 'admin_new_event_location' %></li>
   <li><%= button_link_to Spree.t('event_invitation.back_to_events_list'), spree.admin_events_url, :icon => 'icon-plus', :id => 'admin_event_location' %></li>
+  <li><%= button_link_to Spree.t('event_invitation.new_event_location'), new_object_url, :icon => 'icon-plus', :id => 'admin_new_event_location' %></li>
 <% end %>
 
 
