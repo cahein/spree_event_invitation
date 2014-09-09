@@ -14,13 +14,11 @@ module Spree
         expect(response).to be_success
         expect(response).to render_template("index")
         expect(response.status).to eq(200)
-        expect(response.body).to eq ""
 
         spree_get :new
         expect(response).to be_success
         expect(response.status).to eq(200)
         expect(response).to render_template("edit")
-        expect(response.body).to eq ""
       end
 
       it "should respond to model_class as Spree::Event" do
@@ -30,6 +28,7 @@ module Spree
 
       it "should respond with a list of events" do
         # FactoryGirl
+        location1 = create(:location1)
         event1 = create(:event1)
         event2 = create(:event2)
         f_events = Spree::Event.all
@@ -43,7 +42,8 @@ module Spree
         params['event'] = {
           title: 'Veranstaltung 3',
           date: '2015-01-01',
-          begin: '17:00'
+          begin: '17:00',
+          event_location_id: 1
         }
         expect{
           spree_get :create, params

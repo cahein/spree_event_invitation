@@ -10,6 +10,7 @@
 		  <td class="title"><%= event.title %></td>
 		  <td><%= I18n.localize(event.date, :format => '%d %B %Y') %></td>
 		  <td><%= event.begin %></td>
+		  <td><%= event.event_location.name %></td>
 		</tr>
 		<% end %>
 	 </tbody>
