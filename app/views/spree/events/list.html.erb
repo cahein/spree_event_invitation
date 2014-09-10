@@ -1,6 +1,6 @@
 <% events = Spree::Event.all.where('date > ?', Date.today).order('date ASC') %>
 
-<% if events  %> 
+<% if events && events.size > 0 %> 
 <div id="event-list">
   <h2><%= Spree.t('event_invitation.list_of_events') %></h2>
   <table>

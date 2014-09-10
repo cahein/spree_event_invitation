@@ -19,14 +19,19 @@
 
 <table>
 <tbody>
-<tr><th><%= Spree.t('event_invitation.title') %></th><th><%= Spree.t('event_invitation.date') %></th><th><%= Spree.t('event_invitation.begin') %></th></tr>
+<tr><th><%= Spree.t('event_invitation.title') %></th><th><%= Spree.t('event_invitation.date') %></th><th><%= Spree.t('event_invitation.begin') %></th><th><%= Spree.t('event_invitation.location') %></th></tr>
 
 
   <% @events.each do |event| %>
-  <tr>
+  <tr
+		<% if event.date < Time.new %>
+		<%= ' class=event_over ' %>
+		<% end %>
+		>
     <td><%= event.title %></td>
     <td><%= event.date %></td>
     <td><%= event.begin %></td>
+    <td><%= event.event_location.name %></td>
     <td class="actions" data-hook="admin_pages_index_row_actions">
       <%= link_to_edit event, :no_text => true %>
       <%= link_to_delete event, :no_text => true %>

@@ -16,6 +16,7 @@ de:
       title: "Titel"
       date: "Datum"
       begin: "Beginn"
+      location: "Ort"
   helpers:
     label:
       event:
