@@ -28,7 +28,7 @@
 
 <tr>
 <td><%= f.label :title %><span class="required">*</span></td>
-<td><%= f.text_field :title, :class => 'fullwidth title' %>
+<td><%= f.text_field :title, :class => 'fullwidth title' %></td>
 </tr>
 <tr>
 <td><%= f.label :speaker %></td>
@@ -48,7 +48,7 @@
 </tr>
 <tr>
 <td><%= f.label :event_location %><span class="required">*</span></td>
-<td><%= f.select(:event_location_id, Spree::EventLocation.find(:all).collect {|l| [l.name, l.id]}) %></td>
+<td><%= f.select(:event_location_id, Spree::EventLocation.all.collect {|l| [l.name, l.id]}) %></td>
 </tr>
 <tr><td colspan="2">
 <% if(!@event.id.nil?) %>
@@ -58,5 +58,5 @@
 <% end %>
 
 </td></tr>
-<% end %>
 </table>
+<% end %>
