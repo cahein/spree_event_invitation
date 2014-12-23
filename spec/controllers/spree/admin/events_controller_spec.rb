@@ -8,6 +8,7 @@ module Spree
       stub_authorization!
 
       include Spree::TestingSupport::ControllerRequests
+
       it "should respond successfully" do
         spree_get :index
         expect(response).to be_success
@@ -36,18 +37,14 @@ module Spree
         expect(assigns(:events)).to match_array(f_events)
       end
 
-      it "should create a new event" do
+      it "should respond with edit event page" do
+        event1 = create(:event1)
         params = Hash.new
-        params['event'] = {
-          title: 'Veranstaltung 3',
-          date: '2015-01-01',
-          begin: '17:00',
-          event_location_id: 1
-        }
-        expect{
-          spree_get :create, params
-        }.to change(Spree::Event, :count).by(1)
-        response.should render_template :index
+        params[:id] = '1'
+
+        spree_get :edit, params
+        response.should render_template :edit
+        expect(assigns(:event)).to match(event1)
       end
 
       it "should fail to create a new event" do

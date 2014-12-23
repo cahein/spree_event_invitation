@@ -15,12 +15,8 @@ module Spree
 
       def edit
         @@logger.info("edit event: #{params[:id]}")
-        if(params[:id].is_a Integer)
-          @event = Spree::Event.find(params[:id])
-          render :edit
-        else
-          render :index
-        end
+        @event = Spree::Event.find(params[:id])
+        render :edit
       end
 
       def create
