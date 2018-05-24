@@ -20,7 +20,7 @@ Gem::Specification.new do |s|
   s.add_dependency 'spree_backend', '~> 2.4'
   s.add_dependency 'rails', '~> 4.1'
   s.add_dependency 'sprockets', '~> 2.12.3'
-  s.add_dependency 'devise', '~> 3.2.4'
+  s.add_dependency 'devise', '~> 3.5.4'
 
   s.add_development_dependency 'capybara', '~> 2.4'
   s.add_development_dependency 'coffee-rails'
