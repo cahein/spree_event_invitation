@@ -12,7 +12,7 @@ module Spree
       end
 
       def edit
-        @@logger.info('edit event location: ' + params[:id])
+        Rails.logger.debug 'edit event location: ' + params[:id]
         @event_location = Spree::EventLocation.find(params[:id])
         render :edit
       end
@@ -24,13 +24,13 @@ module Spree
         if (params['id'])
           event_location = Spree::EventLocation.find(params['id'])
           if event_location.update_attributes(params)
-            @@logger.info('going to update event location: ' + params['id'])
+            Rails.logger.info 'going to update event location: ' + params['id']
           else
             flash[:warn] =  "Nothing to update"
             redirect_to action: :index
           end
         else
-          @@logger.info('new event location')
+          Rails.logger.debug 'new event location'
           event_location = Spree::EventLocation.new(params)
         end
 
@@ -41,7 +41,7 @@ module Spree
             render :index
           end
         else
-          @@logger.info('event location not valid')
+          Rails.logger.info 'event location not valid'
           @event_location = event_location
           render :edit
         end
