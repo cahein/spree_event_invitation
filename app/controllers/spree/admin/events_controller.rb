@@ -14,7 +14,7 @@ module Spree
       end
 
       def edit
-        @@logger.info("edit event: #{params[:id]}")
+        logger.info("edit event: #{params[:id]}")
         @event = Spree::Event.find(params[:id])
         render :edit
       end
@@ -26,13 +26,13 @@ module Spree
         if (params['id'])
           event = Spree::Event.find(params['id'])
           if event.update_attributes(params)
-            @@logger.info('going to update event: ' + params['id'])
+            logger.info('going to update event: ' + params['id'])
           else
             flash[:warn] =  Spree::Event.t("nothing_to_update")
             redirect_to action: :index
           end
         else
-          @@logger.info('new event')
+          logger.info('new event')
           event = Spree::Event.new(params)
         end
 
@@ -43,7 +43,7 @@ module Spree
             render :index
           end
         else
-          @@logger.info('event not valid')
+          logger.info('event not valid')
           @event = event
           render :edit
         end

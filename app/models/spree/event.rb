@@ -1,5 +1,5 @@
 module Spree
-  class Event < ActiveRecord::Base
+  class Event < ApplicationRecord
     include ActiveModel::ForbiddenAttributesProtection
     validates_presence_of [:title, :date, :begin, :event_location_id]
 

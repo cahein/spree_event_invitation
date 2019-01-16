@@ -3,7 +3,9 @@ module Spree
   module Admin
     describe EventsController do
       before {
-        controller.stub spree_current_user: User.new
+        controller.stub spree_current_user: FactoryBot.create(:user, email: "spree@example.com", password: "spree123")
+        @location1 = create(:eventlocation, name: 'TuP Verlag', address1: 'Some St 0', zipcode: '12345', city: 'Some City')
+
       }
       stub_authorization!
 
@@ -11,12 +13,12 @@ module Spree
 
       it "should respond successfully" do
         spree_get :index
-        expect(response).to be_success
+        expect(response).to be_successful
         expect(response).to render_template("index")
         expect(response.status).to eq(200)
 
         spree_get :new
-        expect(response).to be_success
+        expect(response).to be_successful
         expect(response.status).to eq(200)
         expect(response).to render_template("edit")
       end
@@ -27,10 +29,9 @@ module Spree
       end
 
       it "should respond with a list of events" do
-        # FactoryGirl
-        location1 = create(:location1)
-        event1 = create(:event1)
-        event2 = create(:event2)
+        # FactoryBot
+        event1 = create(:event, title:'Veranstaltung 1', date:'2019-05-15', 'begin':'19:00', event_location_id: @location1.id)
+        event2 = create(:event, title:'Veranstaltung 2', speaker:'Karam Khella', date:'2019-06-20', 'begin':'19:30', event_location_id: @location1.id)
         f_events = Spree::Event.all
 
         spree_get :index
@@ -38,7 +39,7 @@ module Spree
       end
 
       it "should respond with edit event page" do
-        event1 = create(:event1)
+        event1 = create(:event, 'title':'Veranstaltung 1', 'date':'2019-05-15', 'begin':'19:00', event_location_id: @location1.id)
         params = Hash.new
         params[:id] = '1'
 
@@ -60,7 +61,7 @@ module Spree
       end
 
       it "should delete an event" do
-        event = create(:event1)
+        event = create(:event, 'title':'Veranstaltung 1', 'date':'2019-05-15', 'begin':'19:00', event_location_id: @location1.id)
         expect{
           spree_get :destroy, id: event
         }.to change(Spree::Event,:count).by(-1)

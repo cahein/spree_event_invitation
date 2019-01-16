@@ -1,4 +1,4 @@
-class ChangeTypes < ActiveRecord::Migration
+class ChangeTypes < ActiveRecord::Migration[4.2]
   def up
     change_column :spree_events, :begin, :string
     change_column :spree_events, :end, :string

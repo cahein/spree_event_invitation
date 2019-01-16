@@ -37,7 +37,7 @@ require 'spree_event_invitation/factories'
 # ActiveRecord::Migration.check_pending!
 
 RSpec.configure do |config|
-  config.include FactoryGirl::Syntax::Methods
+  config.include FactoryBot::Syntax::Methods
   config.include Spree::TestingSupport::UrlHelpers
 
   config.expect_with :rspec do |c|

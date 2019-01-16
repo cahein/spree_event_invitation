@@ -4,19 +4,19 @@ module Spree
   module Admin
     describe EventLocationsController do
       before {
-        controller.stub spree_current_user: User.new
+        controller.stub spree_current_user: FactoryBot.create(:user, email: "spree@example.com", password: "spree123")
       }
       stub_authorization!
 
       include Spree::TestingSupport::ControllerRequests
       it "should respond successfully" do
         spree_get :index
-        expect(response).to be_success
+        expect(response).to be_successful
         expect(response).to render_template("index")
         expect(response.status).to eq(200)
 
         spree_get :new
-        expect(response).to be_success
+        expect(response).to be_successful
         expect(response.status).to eq(200)
         expect(response).to render_template("edit")
       end
@@ -27,9 +27,9 @@ module Spree
       end
 
       it "should respond with a list of event locations" do
-        # FactoryGirl
-        location1 = create(:location1)
-        location2 = create(:location2)
+        # FactoryBot
+        event_location1 = create(:eventlocation, name: 'TuP Verlag', address1: 'Some St 0', zipcode: '12345', city: 'Some City')
+        event_location2 = create(:eventlocation, name: 'Name of Location', address1: 'Some St 1', zipcode: '67890', city: 'Other City')
         f_locations = Spree::EventLocation.all
 
         spree_get :index
@@ -63,7 +63,7 @@ module Spree
       end
 
       it "should delete an event location" do
-        event_location = create(:location1)
+        event_location = create(:eventlocation, name: 'TuP Verlag', address1: 'Some St 0', zipcode: '12345', city: 'Some City')
         expect{
           spree_get :destroy, id: event_location
         }.to change(Spree::EventLocation,:count).by(-1)

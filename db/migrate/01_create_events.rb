@@ -1,4 +1,4 @@
-class CreateEvents < ActiveRecord::Migration
+class CreateEvents < ActiveRecord::Migration[4.2]
   def up
     create_table :spree_events do |t|
       t.string :title
