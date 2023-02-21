@@ -1,3 +1,6 @@
+NOTE: SpreeCommerce moved on as a headless open-source ecommerce platform. This extension was only tested with Spree up to version 3.6.
+
+
 SpreeEventInvitation
 ====================
 
